@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Game-React-/static/css/main.e15a1a38.css",
+    "main.js": "/Game-React-/static/js/main.66a99eb5.js",
+    "static/js/787.22c81b65.chunk.js": "/Game-React-/static/js/787.22c81b65.chunk.js",
+    "static/media/tileset.gif": "/Game-React-/static/media/tileset.3f853d2ec877f066386b.gif",
+    "index.html": "/Game-React-/index.html",
+    "main.e15a1a38.css.map": "/Game-React-/static/css/main.e15a1a38.css.map",
+    "main.66a99eb5.js.map": "/Game-React-/static/js/main.66a99eb5.js.map",
+    "787.22c81b65.chunk.js.map": "/Game-React-/static/js/787.22c81b65.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e15a1a38.css",
+    "static/js/main.66a99eb5.js"
+  ]
+}
