@@ -12,7 +12,7 @@ const Trap = () => {
 
     backgroundImage: " url(./midia/TRAP.png)",
     backgroundPosition: "left bottom",
-    animation: "trap 2s steps(8) infinite",
+    animation: "trap 0.5s steps(8) infinite",
   }} />
   )
 }

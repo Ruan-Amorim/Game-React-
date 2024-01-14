@@ -1,7 +1,10 @@
 import React from 'react';
 import { SIZE_1_BLOCK } from '../Sizes';
+import useEnemyMoviment from '../../Hooks/UseEnemyMoviment/Index';
 
-const DemonLevel1 = () => {
+const DemonLevel1 = (props) => {
+  const moviment = useEnemyMoviment({ x: props.x, y: props.y });
+  
   return (
     <div style={{
       position: 'absolute',
@@ -9,12 +12,13 @@ const DemonLevel1 = () => {
       height: SIZE_1_BLOCK,
       paddingTop: 13,
       
-      bottom: 6 * 48,
-      left: 5 * 48,
+      left: SIZE_1_BLOCK * moviment.positionState.x,
+       bottom: SIZE_1_BLOCK * moviment.positionState.y,
       
       backgroundImage: " url(./midia/MINI-DEMON.png)",
       backgroundPosition: "left bottom",
       animation: "heroAnimation 0.9s steps(4) infinite",
+      transform: `scaleX(${moviment.direcao === 'RIGHT' ? 1 : -1})` ,
       zIndex: 1,
     }}/>
   );

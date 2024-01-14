@@ -1,47 +1,20 @@
 import useEventListener from 'use-event-listener';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SIZE_1_BLOCK } from '../Sizes';
+import useHeroMoviment from '../../Hooks/UseHeroMoviment/Index';
 
 const initialPosition = {
   x: 10,
-  y: 10
+  y: 9
 };
 
 const Hero = () => {
-  const [positionState, updatePositionState] = React.useState(initialPosition);
+  const {up, down, left, right, positionState, direcao} = useHeroMoviment(initialPosition);
   
-  useEventListener('keydown', (event) => {
-    if (event.key === 'w') {
-      updatePositionState({ x: positionState.x, y: positionState.y + 1})
-    }else if (event.key === 'a') {
-      updatePositionState({ x: positionState.x - 1, y: positionState.y})
-    }if (event.key === 's') {
-      updatePositionState({ x: positionState.x, y: positionState.y - 1})
-    }if (event.key === 'd') {
-      updatePositionState({ x: positionState.x + 1, y: positionState.y})
-    }
-  })
-  const faca = 1;
-  const up = () => {
-    if (faca == 1){
-      updatePositionState({ x: positionState.x, y: positionState.y + 1})
-    }else{}
-  };
-  const down = () => {
-    if (faca == 1){
-      updatePositionState({ x: positionState.x, y: positionState.y - 1})
-    }else{}
-  };
-  const right = () => {
-    if (faca == 1){
-      updatePositionState({ x: positionState.x + 1, y: positionState.y})
-    }else{}
-  };
-  const left = () => {
-    if (faca == 1){
-      updatePositionState({ x: positionState.x - 1, y: positionState.y})
-    }else{}
-  };
+  
+  useEffect(() => {
+    window.scroll({ top: window.scrollY + 298, behavior: 'smooth' });
+  }, []); // O array vazio [] garante que este efeito ocorra apenas uma vez, equivalente ao componentDidMount
   
   return (
     <>
@@ -57,10 +30,11 @@ const Hero = () => {
        backgroundImage: "url(./midia/HERO.png)",
        backgroundPosition: "left bottom",
        animation: "heroAnimation 0.9s steps(4) infinite",
+       transform: `scaleX(${direcao === 'RIGHT' ? 1 : -1})` ,
        zIndex: 10,
     }} />
-    
-    <div className="container">
+   
+   <div className="container">
       <div className="controls">
         <div className="move-buttons">
           <button onClick={up} className="arrow-button up">&#9650;</button>
@@ -68,13 +42,15 @@ const Hero = () => {
           <button onClick={left} className="arrow-button left">&#9668;</button>
           <button onClick={right} className="arrow-button right">&#9658;</button>
         </div>
-      </div>
+      </div>*
       <div className="action-buttons">
         <button className="attack-button">1</button>
         <button className="attack-button">2</button>
         <button className="attack-button">3</button>
       </div>
     </div>
+    
+   
     </>
   );
 };
